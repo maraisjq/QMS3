@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="EF6CodeFirstDemo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EnumType Name="TeachingMode" IsFlags="false" customannotation:ClrType="EF6CodeFirstDemo.TeachingMode, EF6CodeFirstDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
+          <Member Name="Online" Value="0" />
+          <Member Name="ClassRoom" Value="1" />
+          <Member Name="LiveOnline" Value="2" />
+        </EnumType>
+        <EntityContainer Name="SchoolContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="Institution" EntityType="EF6CodeFirstDemo.Institutions" />
+          <EntitySet Name="Directorates" EntityType="EF6CodeFirstDemo.Directorates" />
+          <EntitySet Name="Departments" EntityType="EF6CodeFirstDemo.Departments" />
+          <EntitySet Name="Modalities" EntityType="EF6CodeFirstDemo.Modalities" />
+          <EntitySet Name="Committees" EntityType="EF6CodeFirstDemo.Committees" />
+          <AssociationSet Name="InstitutionsDirectorates" Association="EF6CodeFirstDemo.InstitutionsDirectorates">
+            <End Role="Institutions" EntitySet="Institution" />
+            <End Role="Directorates" EntitySet="Directorates" />
+          </AssociationSet>
+          <AssociationSet Name="DirectoratesDepartments" Association="EF6CodeFirstDemo.DirectoratesDepartments">
+            <End Role="Directorates" EntitySet="Directorates" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentsModalities" Association="EF6CodeFirstDemo.DepartmentsModalities">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Modalities" EntitySet="Modalities" />
+          </AssociationSet>
+          <AssociationSet Name="InstitutionsCommittees" Association="EF6CodeFirstDemo.InstitutionsCommittees">
+            <End Role="Institutions" EntitySet="Institution" />
+            <End Role="Committees" EntitySet="Committees" />
+          </AssociationSet>
+          <EntitySet Name="Levels" EntityType="EF6CodeFirstDemo.Levels" />
+          <AssociationSet Name="CommitteesLevels" Association="EF6CodeFirstDemo.CommitteesLevels">
+            <End Role="Committees" EntitySet="Committees" />
+            <End Role="Levels" EntitySet="Levels" />
+          </AssociationSet>
+          <EntitySet Name="Staffmembers" EntityType="EF6CodeFirstDemo.Staffmembers" />
+          <EntitySet Name="Groups" EntityType="EF6CodeFirstDemo.Groups" />
+          <EntitySet Name="Roles" EntityType="EF6CodeFirstDemo.Roles" />
+          <EntitySet Name="Statuses" EntityType="EF6CodeFirstDemo.Statuses" />
+          <AssociationSet Name="StaffmembersGroups" Association="EF6CodeFirstDemo.StaffmembersGroups">
+            <End Role="Staffmembers" EntitySet="Staffmembers" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="StaffmembersRoles" Association="EF6CodeFirstDemo.StaffmembersRoles">
+            <End Role="Staffmembers" EntitySet="Staffmembers" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="StaffmembersStatuses" Association="EF6CodeFirstDemo.StaffmembersStatuses">
+            <End Role="Staffmembers" EntitySet="Staffmembers" />
+            <End Role="Statuses" EntitySet="Statuses" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentsStaffmembers" Association="EF6CodeFirstDemo.DepartmentsStaffmembers">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Staffmembers" EntitySet="Staffmembers" />
+          </AssociationSet>
+          <EntitySet Name="Documents" EntityType="EF6CodeFirstDemo.Documents" />
+          <EntitySet Name="Types" EntityType="EF6CodeFirstDemo.Types" />
+          <EntitySet Name="Changes" EntityType="EF6CodeFirstDemo.Changes" />
+          <EntitySet Name="Actions" EntityType="EF6CodeFirstDemo.Actions" />
+          <EntitySet Name="Readergroups" EntityType="EF6CodeFirstDemo.Readergroups" />
+          <AssociationSet Name="DocumentsTypes" Association="EF6CodeFirstDemo.DocumentsTypes">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Types" EntitySet="Types" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsActions" Association="EF6CodeFirstDemo.DocumentsActions">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Actions" EntitySet="Actions" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsChanges" Association="EF6CodeFirstDemo.DocumentsChanges">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Changes" EntitySet="Changes" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsReadergroups" Association="EF6CodeFirstDemo.DocumentsReadergroups">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Readergroups" EntitySet="Readergroups" />
+          </AssociationSet>
+          <EntitySet Name="Audits" EntityType="EF6CodeFirstDemo.Audits" />
+          <EntitySet Name="Frequencies" EntityType="EF6CodeFirstDemo.Frequencies" />
+          <EntitySet Name="Methods" EntityType="EF6CodeFirstDemo.Methods" />
+          <EntitySet Name="Outcomes" EntityType="EF6CodeFirstDemo.Outcomes" />
+          <EntitySet Name="Presentations" EntityType="EF6CodeFirstDemo.Presentations" />
+          <EntitySet Name="AuditStatuses" EntityType="EF6CodeFirstDemo.AuditStatuses" />
+          <EntitySet Name="AuditReports" EntityType="EF6CodeFirstDemo.AuditReports" />
+          <EntitySet Name="AuditTypes" EntityType="EF6CodeFirstDemo.AuditTypes" />
+          <AssociationSet Name="AuditsAuditTypes" Association="EF6CodeFirstDemo.AuditsAuditTypes">
+            <End Role="Audits" EntitySet="Audits" />
+            <End Role="AuditTypes" EntitySet="AuditTypes" />
+          </AssociationSet>
+          <EntitySet Name="IRMERAudits" EntityType="EF6CodeFirstDemo.IRMERAudits" />
+          <AssociationSet Name="IRMERAuditsFrequencies" Association="EF6CodeFirstDemo.IRMERAuditsFrequencies">
+            <End Role="IRMERAudits" EntitySet="IRMERAudits" />
+            <End Role="Frequencies" EntitySet="Frequencies" />
+          </AssociationSet>
+          <AssociationSet Name="IRMERAuditsMethods" Association="EF6CodeFirstDemo.IRMERAuditsMethods">
+            <End Role="IRMERAudits" EntitySet="IRMERAudits" />
+            <End Role="Methods" EntitySet="Methods" />
+          </AssociationSet>
+          <AssociationSet Name="AuditsPresentations" Association="EF6CodeFirstDemo.AuditsPresentations">
+            <End Role="Audits" EntitySet="Audits" />
+            <End Role="Presentations" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="IRMERAuditsPresentations" Association="EF6CodeFirstDemo.IRMERAuditsPresentations">
+            <End Role="IRMERAudits" EntitySet="IRMERAudits" />
+            <End Role="Presentations" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="AuditsOutcomes" Association="EF6CodeFirstDemo.AuditsOutcomes">
+            <End Role="Audits" EntitySet="Audits" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="IRMERAuditsOutcomes" Association="EF6CodeFirstDemo.IRMERAuditsOutcomes">
+            <End Role="IRMERAudits" EntitySet="IRMERAudits" />
+            <End Role="Outcomes" EntitySet="Outcomes" />
+          </AssociationSet>
+          <AssociationSet Name="AuditsAuditStatuses" Association="EF6CodeFirstDemo.AuditsAuditStatuses">
+            <End Role="Audits" EntitySet="Audits" />
+            <End Role="AuditStatuses" EntitySet="AuditStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="IRMERAuditsAuditStatuses" Association="EF6CodeFirstDemo.IRMERAuditsAuditStatuses">
+            <End Role="IRMERAudits" EntitySet="IRMERAudits" />
+            <End Role="AuditStatuses" EntitySet="AuditStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="AuditsAuditReports" Association="EF6CodeFirstDemo.AuditsAuditReports">
+            <End Role="Audits" EntitySet="Audits" />
+            <End Role="AuditReports" EntitySet="AuditReports" />
+          </AssociationSet>
+          <EntitySet Name="Staffs" EntityType="EF6CodeFirstDemo.Staff" />
+          <AssociationSet Name="DocumentsStaff" Association="EF6CodeFirstDemo.DocumentsStaff">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Institutions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Directorates" Relationship="EF6CodeFirstDemo.InstitutionsDirectorates" FromRole="Institutions" ToRole="Directorates" />
+          <NavigationProperty Name="Committees" Relationship="EF6CodeFirstDemo.InstitutionsCommittees" FromRole="Institutions" ToRole="Committees" />
+        </EntityType>
+        <EntityType Name="Directorates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Institution" Relationship="EF6CodeFirstDemo.InstitutionsDirectorates" FromRole="Directorates" ToRole="Institutions" />
+          <Property Name="InstitutionsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="EF6CodeFirstDemo.DirectoratesDepartments" FromRole="Directorates" ToRole="Departments" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Directorate" Relationship="EF6CodeFirstDemo.DirectoratesDepartments" FromRole="Departments" ToRole="Directorates" />
+          <Property Name="DirectoratesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modalities" Relationship="EF6CodeFirstDemo.DepartmentsModalities" FromRole="Departments" ToRole="Modalities" />
+          <NavigationProperty Name="Staffmember" Relationship="EF6CodeFirstDemo.DepartmentsStaffmembers" FromRole="Departments" ToRole="Staffmembers" />
+        </EntityType>
+        <EntityType Name="Modalities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="EF6CodeFirstDemo.DepartmentsModalities" FromRole="Modalities" ToRole="Departments" />
+          <Property Name="DepartmentsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Committees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Institution" Relationship="EF6CodeFirstDemo.InstitutionsCommittees" FromRole="Committees" ToRole="Institutions" />
+          <Property Name="InstitutionsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Level" Relationship="EF6CodeFirstDemo.CommitteesLevels" FromRole="Committees" ToRole="Levels" />
+        </EntityType>
+        <Association Name="InstitutionsDirectorates">
+          <End Type="EF6CodeFirstDemo.Institutions" Role="Institutions" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Directorates" Role="Directorates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institutions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Directorates">
+              <PropertyRef Name="InstitutionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DirectoratesDepartments">
+          <End Type="EF6CodeFirstDemo.Directorates" Role="Directorates" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Departments" Role="Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Directorates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="DirectoratesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DepartmentsModalities">
+          <End Type="EF6CodeFirstDemo.Departments" Role="Departments" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Modalities" Role="Modalities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modalities">
+              <PropertyRef Name="DepartmentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InstitutionsCommittees">
+          <End Type="EF6CodeFirstDemo.Institutions" Role="Institutions" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Committees" Role="Committees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institutions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Committees">
+              <PropertyRef Name="InstitutionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Committee" Relationship="EF6CodeFirstDemo.CommitteesLevels" FromRole="Levels" ToRole="Committees" />
+        </EntityType>
+        <Association Name="CommitteesLevels">
+          <End Type="EF6CodeFirstDemo.Committees" Role="Committees" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Levels" Role="Levels" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Staffmembers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="EMail" Type="String" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="EF6CodeFirstDemo.StaffmembersGroups" FromRole="Staffmembers" ToRole="Groups" />
+          <NavigationProperty Name="Roles" Relationship="EF6CodeFirstDemo.StaffmembersRoles" FromRole="Staffmembers" ToRole="Roles" />
+          <NavigationProperty Name="Status" Relationship="EF6CodeFirstDemo.StaffmembersStatuses" FromRole="Staffmembers" ToRole="Statuses" />
+          <NavigationProperty Name="Department" Relationship="EF6CodeFirstDemo.DepartmentsStaffmembers" FromRole="Staffmembers" ToRole="Departments" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staffmember" Relationship="EF6CodeFirstDemo.StaffmembersGroups" FromRole="Groups" ToRole="Staffmembers" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staffmember" Relationship="EF6CodeFirstDemo.StaffmembersRoles" FromRole="Roles" ToRole="Staffmembers" />
+          <Property Name="StaffmembersId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Staffmember" Relationship="EF6CodeFirstDemo.StaffmembersStatuses" FromRole="Statuses" ToRole="Staffmembers" />
+        </EntityType>
+        <Association Name="StaffmembersGroups">
+          <End Type="EF6CodeFirstDemo.Staffmembers" Role="Staffmembers" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Groups" Role="Groups" Multiplicity="1" />
+        </Association>
+        <Association Name="StaffmembersRoles">
+          <End Type="EF6CodeFirstDemo.Staffmembers" Role="Staffmembers" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Roles" Role="Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staffmembers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="StaffmembersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StaffmembersStatuses">
+          <End Type="EF6CodeFirstDemo.Staffmembers" Role="Staffmembers" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Statuses" Role="Statuses" Multiplicity="1" />
+        </Association>
+        <Association Name="DepartmentsStaffmembers">
+          <End Type="EF6CodeFirstDemo.Departments" Role="Departments" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Staffmembers" Role="Staffmembers" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Type" Relationship="EF6CodeFirstDemo.DocumentsTypes" FromRole="Documents" ToRole="Types" />
+          <NavigationProperty Name="Action" Relationship="EF6CodeFirstDemo.DocumentsActions" FromRole="Documents" ToRole="Actions" />
+          <NavigationProperty Name="Changes" Relationship="EF6CodeFirstDemo.DocumentsChanges" FromRole="Documents" ToRole="Changes" />
+          <NavigationProperty Name="Readergroups" Relationship="EF6CodeFirstDemo.DocumentsReadergroups" FromRole="Documents" ToRole="Readergroups" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="CreationDate" Type="String" Nullable="false" />
+          <NavigationProperty Name="Author" />
+          <NavigationProperty Name="Staff" Relationship="EF6CodeFirstDemo.DocumentsStaff" FromRole="Documents" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="EF6CodeFirstDemo.DocumentsTypes" FromRole="Types" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="Changes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="EF6CodeFirstDemo.DocumentsChanges" FromRole="Changes" ToRole="Documents" />
+          <Property Name="DocumentsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="EF6CodeFirstDemo.DocumentsActions" FromRole="Actions" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="Readergroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="EF6CodeFirstDemo.DocumentsReadergroups" FromRole="Readergroups" ToRole="Documents" />
+          <Property Name="DocumentsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="DocumentsTypes">
+          <End Type="EF6CodeFirstDemo.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Types" Role="Types" Multiplicity="1" />
+        </Association>
+        <Association Name="DocumentsActions">
+          <End Type="EF6CodeFirstDemo.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Actions" Role="Actions" Multiplicity="1" />
+        </Association>
+        <Association Name="DocumentsChanges">
+          <End Type="EF6CodeFirstDemo.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Changes" Role="Changes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Changes">
+              <PropertyRef Name="DocumentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DocumentsReadergroups">
+          <End Type="EF6CodeFirstDemo.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Readergroups" Role="Readergroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Readergroups">
+              <PropertyRef Name="DocumentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Audits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AuditType" Relationship="EF6CodeFirstDemo.AuditsAuditTypes" FromRole="Audits" ToRole="AuditTypes" />
+          <NavigationProperty Name="Presentation" Relationship="EF6CodeFirstDemo.AuditsPresentations" FromRole="Audits" ToRole="Presentations" />
+          <NavigationProperty Name="Outcome" Relationship="EF6CodeFirstDemo.AuditsOutcomes" FromRole="Audits" ToRole="Outcomes" />
+          <NavigationProperty Name="AuditStatus" Relationship="EF6CodeFirstDemo.AuditsAuditStatuses" FromRole="Audits" ToRole="AuditStatuses" />
+          <NavigationProperty Name="AuditReport" Relationship="EF6CodeFirstDemo.AuditsAuditReports" FromRole="Audits" ToRole="AuditReports" />
+        </EntityType>
+        <EntityType Name="Frequencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="IRMERAudit" Relationship="EF6CodeFirstDemo.IRMERAuditsFrequencies" FromRole="Frequencies" ToRole="IRMERAudits" />
+        </EntityType>
+        <EntityType Name="Methods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="IRMERAudit" Relationship="EF6CodeFirstDemo.IRMERAuditsMethods" FromRole="Methods" ToRole="IRMERAudits" />
+        </EntityType>
+        <EntityType Name="Outcomes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Audit" Relationship="EF6CodeFirstDemo.AuditsOutcomes" FromRole="Outcomes" ToRole="Audits" />
+          <NavigationProperty Name="IRMERAudit" Relationship="EF6CodeFirstDemo.IRMERAuditsOutcomes" FromRole="Outcomes" ToRole="IRMERAudits" />
+        </EntityType>
+        <EntityType Name="Presentations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Audit" Relationship="EF6CodeFirstDemo.AuditsPresentations" FromRole="Presentations" ToRole="Audits" />
+          <NavigationProperty Name="IRMERAudit" Relationship="EF6CodeFirstDemo.IRMERAuditsPresentations" FromRole="Presentations" ToRole="IRMERAudits" />
+        </EntityType>
+        <EntityType Name="AuditStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Audit" Relationship="EF6CodeFirstDemo.AuditsAuditStatuses" FromRole="AuditStatuses" ToRole="Audits" />
+          <NavigationProperty Name="IRMERAudit" Relationship="EF6CodeFirstDemo.IRMERAuditsAuditStatuses" FromRole="AuditStatuses" ToRole="IRMERAudits" />
+        </EntityType>
+        <EntityType Name="AuditReports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Audit" Relationship="EF6CodeFirstDemo.AuditsAuditReports" FromRole="AuditReports" ToRole="Audits" />
+        </EntityType>
+        <EntityType Name="AuditTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Audit" Relationship="EF6CodeFirstDemo.AuditsAuditTypes" FromRole="AuditTypes" ToRole="Audits" />
+        </EntityType>
+        <Association Name="AuditsAuditTypes">
+          <End Type="EF6CodeFirstDemo.Audits" Role="Audits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.AuditTypes" Role="AuditTypes" Multiplicity="1" />
+        </Association>
+        <EntityType Name="IRMERAudits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Frequency" Relationship="EF6CodeFirstDemo.IRMERAuditsFrequencies" FromRole="IRMERAudits" ToRole="Frequencies" />
+          <NavigationProperty Name="Method" Relationship="EF6CodeFirstDemo.IRMERAuditsMethods" FromRole="IRMERAudits" ToRole="Methods" />
+          <NavigationProperty Name="Presentation" Relationship="EF6CodeFirstDemo.IRMERAuditsPresentations" FromRole="IRMERAudits" ToRole="Presentations" />
+          <NavigationProperty Name="Outcome" Relationship="EF6CodeFirstDemo.IRMERAuditsOutcomes" FromRole="IRMERAudits" ToRole="Outcomes" />
+          <NavigationProperty Name="AuditStatus" Relationship="EF6CodeFirstDemo.IRMERAuditsAuditStatuses" FromRole="IRMERAudits" ToRole="AuditStatuses" />
+        </EntityType>
+        <Association Name="IRMERAuditsFrequencies">
+          <End Type="EF6CodeFirstDemo.IRMERAudits" Role="IRMERAudits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Frequencies" Role="Frequencies" Multiplicity="1" />
+        </Association>
+        <Association Name="IRMERAuditsMethods">
+          <End Type="EF6CodeFirstDemo.IRMERAudits" Role="IRMERAudits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Methods" Role="Methods" Multiplicity="1" />
+        </Association>
+        <Association Name="AuditsPresentations">
+          <End Type="EF6CodeFirstDemo.Audits" Role="Audits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Presentations" Role="Presentations" Multiplicity="1" />
+        </Association>
+        <Association Name="IRMERAuditsPresentations">
+          <End Type="EF6CodeFirstDemo.IRMERAudits" Role="IRMERAudits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Presentations" Role="Presentations" Multiplicity="1" />
+        </Association>
+        <Association Name="AuditsOutcomes">
+          <End Type="EF6CodeFirstDemo.Audits" Role="Audits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Outcomes" Role="Outcomes" Multiplicity="1" />
+        </Association>
+        <Association Name="IRMERAuditsOutcomes">
+          <End Type="EF6CodeFirstDemo.IRMERAudits" Role="IRMERAudits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Outcomes" Role="Outcomes" Multiplicity="1" />
+        </Association>
+        <Association Name="AuditsAuditStatuses">
+          <End Type="EF6CodeFirstDemo.Audits" Role="Audits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.AuditStatuses" Role="AuditStatuses" Multiplicity="1" />
+        </Association>
+        <Association Name="IRMERAuditsAuditStatuses">
+          <End Type="EF6CodeFirstDemo.IRMERAudits" Role="IRMERAudits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.AuditStatuses" Role="AuditStatuses" Multiplicity="1" />
+        </Association>
+        <Association Name="AuditsAuditReports">
+          <End Type="EF6CodeFirstDemo.Audits" Role="Audits" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.AuditReports" Role="AuditReports" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="EF6CodeFirstDemo.DocumentsStaff" FromRole="Staff" ToRole="Documents" />
+        </EntityType>
+        <Association Name="DocumentsStaff">
+          <End Type="EF6CodeFirstDemo.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="EF6CodeFirstDemo.Staff" Role="Staff" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="SchoolContext">
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Teacher_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TeacherName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ModeOfTeaching" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Teacher_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="TeacherName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ModeOfTeaching" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Teacher_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CodeFirstDatabase">
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="371885268f9841f5a315b2d1c8b9cdfe" Name="Diagram1">
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Institutions" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Directorates" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Departments" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Modalities" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Committees" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="EF6CodeFirstDemo.InstitutionsDirectorates" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DirectoratesDepartments" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DepartmentsModalities" />
+        <AssociationConnector Association="EF6CodeFirstDemo.InstitutionsCommittees" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Levels" Width="1.5" PointX="2.375" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="EF6CodeFirstDemo.CommitteesLevels" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Staffmembers" Width="1.5" PointX="9.75" PointY="3.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Groups" Width="1.5" PointX="7.875" PointY="3.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Roles" Width="1.5" PointX="9.75" PointY="4" IsExpanded="false" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Statuses" Width="1.5" PointX="11.625" PointY="3.375" IsExpanded="false" />
+        <AssociationConnector Association="EF6CodeFirstDemo.StaffmembersGroups" />
+        <AssociationConnector Association="EF6CodeFirstDemo.StaffmembersRoles" />
+        <AssociationConnector Association="EF6CodeFirstDemo.StaffmembersStatuses" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DepartmentsStaffmembers" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Documents" Width="1.5" PointX="5.375" PointY="6" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Types" Width="1.5" PointX="7.25" PointY="9" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Changes" Width="1.5" PointX="9.125" PointY="9" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Actions" Width="1.5" PointX="3.375" PointY="9" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Readergroups" Width="1.5" PointX="5.375" PointY="9.75" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DocumentsTypes" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DocumentsActions" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DocumentsChanges" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DocumentsReadergroups" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Audits" Width="1.5" PointX="7.5" PointY="13.875" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Frequencies" Width="1.5" PointX="3.5" PointY="14.25" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Methods" Width="1.5" PointX="3.875" PointY="16.5" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Outcomes" Width="1.5" PointX="1.625" PointY="15.125" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Presentations" Width="1.5" PointX="8.75" PointY="16.625" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.AuditStatuses" Width="1.5" PointX="6.25" PointY="17.75" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.AuditReports" Width="1.5" PointX="10.875" PointY="16.375" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.AuditTypes" Width="1.5" PointX="10" PointY="14.25" />
+        <AssociationConnector Association="EF6CodeFirstDemo.AuditsAuditTypes" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.IRMERAudits" Width="1.5" PointX="5.625" PointY="13.125" />
+        <AssociationConnector Association="EF6CodeFirstDemo.IRMERAuditsFrequencies" />
+        <AssociationConnector Association="EF6CodeFirstDemo.IRMERAuditsMethods" />
+        <AssociationConnector Association="EF6CodeFirstDemo.AuditsPresentations" />
+        <AssociationConnector Association="EF6CodeFirstDemo.IRMERAuditsPresentations" />
+        <AssociationConnector Association="EF6CodeFirstDemo.AuditsOutcomes" />
+        <AssociationConnector Association="EF6CodeFirstDemo.IRMERAuditsOutcomes" />
+        <AssociationConnector Association="EF6CodeFirstDemo.AuditsAuditStatuses" />
+        <AssociationConnector Association="EF6CodeFirstDemo.IRMERAuditsAuditStatuses" />
+        <AssociationConnector Association="EF6CodeFirstDemo.AuditsAuditReports" />
+        <EntityTypeShape EntityType="EF6CodeFirstDemo.Staff" Width="1.5" PointX="8.125" PointY="6.375" />
+        <AssociationConnector Association="EF6CodeFirstDemo.DocumentsStaff" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>

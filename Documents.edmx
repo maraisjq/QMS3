@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="QMS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EnumType Name="TeachingMode" IsFlags="false" customannotation:ClrType="EF6CodeFirstDemo.TeachingMode, EF6CodeFirstDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
+          <Member Name="Online" Value="0" />
+          <Member Name="ClassRoom" Value="1" />
+          <Member Name="LiveOnline" Value="2" />
+        </EnumType>
+        <EntityContainer Name="QMSContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="Documents" EntityType="QMS.Documents" />
+          <EntitySet Name="DocumentTypes" EntityType="QMS.DocumentTypes" />
+          <EntitySet Name="DocumentChanges" EntityType="QMS.DocumentChanges" />
+          <EntitySet Name="DocumentActions" EntityType="QMS.DocumentActions" />
+          <EntitySet Name="Readergroups" EntityType="QMS.Readergroups" />
+          <AssociationSet Name="DocumentsTypes" Association="QMS.DocumentsTypes">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Types" EntitySet="DocumentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsActions" Association="QMS.DocumentsActions">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Actions" EntitySet="DocumentActions" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsChanges" Association="QMS.DocumentsChanges">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Changes" EntitySet="DocumentChanges" />
+          </AssociationSet>
+          <AssociationSet Name="DocumentsReadergroups" Association="QMS.DocumentsReadergroups">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Readergroups" EntitySet="Readergroups" />
+          </AssociationSet>
+          <EntitySet Name="Staffs" EntityType="QMS.Staff" />
+          <AssociationSet Name="DocumentsStaff" Association="QMS.DocumentsStaff">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Type" Relationship="QMS.DocumentsTypes" FromRole="Documents" ToRole="Types" />
+          <NavigationProperty Name="Action" Relationship="QMS.DocumentsActions" FromRole="Documents" ToRole="Actions" />
+          <NavigationProperty Name="Changes" Relationship="QMS.DocumentsChanges" FromRole="Documents" ToRole="Changes" />
+          <NavigationProperty Name="Readergroups" Relationship="QMS.DocumentsReadergroups" FromRole="Documents" ToRole="Readergroups" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="CreationDate" Type="String" Nullable="false" />
+          <NavigationProperty Name="Author" />
+          <NavigationProperty Name="Staff" Relationship="QMS.DocumentsStaff" FromRole="Documents" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="QMS.DocumentsTypes" FromRole="Types" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="DocumentChanges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="QMS.DocumentsChanges" FromRole="Changes" ToRole="Documents" />
+          <Property Name="DocumentsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="QMS.DocumentsActions" FromRole="Actions" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="Readergroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="QMS.DocumentsReadergroups" FromRole="Readergroups" ToRole="Documents" />
+          <Property Name="DocumentsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="DocumentsTypes">
+          <End Type="QMS.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="QMS.DocumentTypes" Role="Types" Multiplicity="1" />
+        </Association>
+        <Association Name="DocumentsActions">
+          <End Type="QMS.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="QMS.DocumentActions" Role="Actions" Multiplicity="1" />
+        </Association>
+        <Association Name="DocumentsChanges">
+          <End Type="QMS.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="QMS.DocumentChanges" Role="Changes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Changes">
+              <PropertyRef Name="DocumentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DocumentsReadergroups">
+          <End Type="QMS.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="QMS.Readergroups" Role="Readergroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Readergroups">
+              <PropertyRef Name="DocumentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="QMS.DocumentsStaff" FromRole="Staff" ToRole="Documents" />
+        </EntityType>
+        <Association Name="DocumentsStaff">
+          <End Type="QMS.Documents" Role="Documents" Multiplicity="1" />
+          <End Type="QMS.Staff" Role="Staff" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="QMSContext">
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Teacher_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TeacherName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ModeOfTeaching" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Teacher_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="TeacherName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ModeOfTeaching" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Teacher_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CodeFirstDatabase">
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="371885268f9841f5a315b2d1c8b9cdfe" Name="Diagram1">
+        <EntityTypeShape EntityType="QMS.Documents" Width="1.5" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="QMS.DocumentTypes" Width="1.5" PointX="7.375" PointY="4.875" />
+        <EntityTypeShape EntityType="QMS.DocumentChanges" Width="1.5" PointX="7.375" PointY="2.75" />
+        <EntityTypeShape EntityType="QMS.DocumentActions" Width="1.5" PointX="2.5" PointY="1.25" />
+        <EntityTypeShape EntityType="QMS.Readergroups" Width="1.5" PointX="2.5" PointY="3.25" />
+        <AssociationConnector Association="QMS.DocumentsTypes" />
+        <AssociationConnector Association="QMS.DocumentsActions" />
+        <AssociationConnector Association="QMS.DocumentsChanges" />
+        <AssociationConnector Association="QMS.DocumentsReadergroups" />
+        <EntityTypeShape EntityType="QMS.Staff" Width="1.5" PointX="7.375" PointY="0.5" />
+        <AssociationConnector Association="QMS.DocumentsStaff" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>
